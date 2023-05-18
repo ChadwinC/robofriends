@@ -3,6 +3,7 @@ import CardList from "../Components/CardList";
 import SearchBox from "../Components/SearchBox"
 import Scroll from "../Components/Scroll";
 import "./App.css"
+import ErrorBoundry from "../Components/ErrorBoundry";
 
 class App extends Component{ // smart component(Lifecycle components)
     constructor() {
@@ -36,9 +37,11 @@ render() {
                 <div className ='tc'>
                     <h1 className="f1">Robofriends</h1>
                     <SearchBox searchchange={this.onSearchChange}/>
-                    <Scroll>
-                    <CardList robots={filteredRobot}/>
-                    </Scroll>
+                    <ErrorBoundry>
+                        <Scroll>
+                        <CardList robots={filteredRobot}/>
+                        </Scroll>
+                    </ErrorBoundry>
                 </div>       
         )    
         }
